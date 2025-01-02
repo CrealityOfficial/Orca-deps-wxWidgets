@@ -2484,11 +2484,13 @@ void wxWindowBase::SetContainingSizer(wxSizer* sizer)
     {
         // This would be caught by the check below too, but give a more clear
         // error message in this case.
+        #if wxDEBUG_LEVEL > 1
         wxASSERT_MSG( m_containingSizer != sizer,
                       wxS("Adding a window to the same sizer twice?") );
 
         wxCHECK_RET( !m_containingSizer,
                      wxS("Adding a window already in a sizer, detach it first!") );
+        #endif // wxDEBUG_LEVEL > 1
     }
 
     m_containingSizer = sizer;
